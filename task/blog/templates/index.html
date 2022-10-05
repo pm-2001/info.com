@@ -1,0 +1,216 @@
+{%extends 'base.html'%}
+{%block title%}blogs{%endblock title%}
+{% block body %}
+<style>
+  /* The alert message box */
+  .alert {
+    position: absolute;
+    top: 100px;
+    padding: 10px 10px 0px 10px;
+    background-color: #dddddd; /* Red */
+    color: rgb(0, 0, 0);
+    margin: -39px 90vh;
+    width: max-content;
+    height: 6%;
+    align-items: center;
+    justify-content: center;
+    }
+
+/* The close button */
+.closebtn {
+  margin-left: 15px;
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+body{
+  font-family: "Mulish",sans-serif;
+}
+
+.container{
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 10px 10px rgba(0, 0, 0, .2);
+  display: flex;
+  max-width: 100%;
+  overflow: hidden;
+  width: 900px;
+  height: 30vh;
+  position: relative;
+  margin: 50px;
+}
+
+.container h6{ 
+  opacity: .6;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.container h2{
+  letter-spacing: 1px;
+  margin: 10px 0;
+}
+
+.preview img{ 
+  width: 50vh;
+  height: 35vh;
+
+}
+
+.info{
+  padding: 30px;
+  width: 100%;
+  padding-top: 0px;
+}
+
+.progress-text{
+  font-size: 10px;
+  opacity: .6;
+  letter-spacing: 1px;
+  margin-right: 0px;
+}
+
+.info p{
+  font-size: 12px;
+}
+
+.btn{
+  background: #e40046;
+  border: 1px solid transparent;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, rgba(0, 0, 0, .2));
+  color: #fff;
+  padding: 10px 20px;
+  position: absolute;
+  bottom: 20px;
+  right: 30px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all .4s ease-in-out;
+  font-weight: bold;
+  border-radius: 20px;
+}
+
+.btn:hover{
+  background: #fff;
+  color: #e40046;
+  border: 1px solid #e40046;
+  transform: scale(1.05);
+}
+
+.column4 {
+  /* top: 0;
+  position: sticky; */
+  width: 70%;
+  
+}
+.recent{
+  border-style: solid;
+  border-color: #f5f0f0d2;
+  background: #ff9d9dd2;
+  border-radius: 12px;
+  /* height: 50vh; */
+  text-align: left;
+  padding: 30px;
+}
+.recent a{
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+}
+
+.column1 {
+  float: left;
+  width: 70%;
+  margin-bottom: 30vh;
+}
+.column2 {
+  float: left;
+  width: 30%;
+  margin: 8vh 0 30vh 0;
+  /* margin-bottom: 30vh; */
+}
+
+@media(max-width:768px){
+  .course{
+    flex-direction: column;
+    width: 90%;
+  }
+
+  .preview{
+    width: 100%;
+  }
+  .preview h2{
+    margin: 10px 0 0;
+  }
+  .preview a{
+    margin-top: 10px;
+  }
+  .info h2{
+    margin-top: 10px;
+  }
+  .info p{
+    margin-bottom: 50px;
+  }
+  .btn{
+    padding: 10px 15px;
+    font-size: 14px;
+    /* float: right; */
+  }
+}
+</style>
+
+{%for msg in messages%}
+  <div class="alert">
+    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+    {{msg}}
+  </div>
+{%endfor%}
+
+
+  <div class="column1">
+    {%for i in posts %}
+    <div class="container">
+      <div class="preview">
+        {% if i.image %}
+                  <img class ="card-img-top" src="{{i.image.url}}">
+        {% endif %}
+      </div>
+      <div class="info">
+          <span class="progress-text">{{i.date}}</span>
+        <h6>BY - {{i.username}} </h6>
+        <h2>{{i.category}}-{{i.title}}</h2>
+        <p class="p-trunc">{{ i.snippet}}</p>
+        <a href = "{% url 'postdetail' i.id %}"><button class="btn">Read more</button></a>
+      </div>
+    </div>
+    {%endfor%}
+  </div>
+  
+  {% comment %} <script>
+    const trunc = document.querySelector('.p-trunc');
+    trunc.innerText= trunc.innerText.substring(0,20)
+  </script> {% endcomment %}
+
+<div class="column2">
+  <div class="column4" >
+    <div class="recent">
+        <h2>Search by category ...</h2>
+        <br>
+          {%for k in categories %}
+            <div class="submenu">
+              <a href="{% url 'category' k.name %}"><h3>{{k.name}}</h3></a>
+              <br>
+            </div> 
+          {% endfor %}
+    </div>
+  </div>
+</div>
+
+
+
+    
+{% endblock body %}

@@ -1,0 +1,397 @@
+{% extends 'base.html' %}
+{% block title %}Profile {% endblock title %}
+{% block body %}
+
+{% comment %} <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"> {% endcomment %}
+{% comment %} <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> {% endcomment %}
+<style>
+
+    /* Import Font Dancing Script */
+    @import url(https://fonts.googleapis.com/css?family=Dancing+Script);
+    
+
+    /* NavbarTop */
+    .navbar-top {
+        background: white;
+        color: #333;
+        box-shadow: 0px 4px 8px 0px grey;
+        height: 70px;
+    }
+    
+    .title {
+        font-family: 'Dancing Script', cursive;
+        padding-top: 15px;
+        position: absolute;
+        left: 45%;
+    }
+    
+    .navbar-top ul {
+        float: right;
+        list-style-type: none;
+        margin: 0;
+        overflow: hidden;
+        padding: 18px 50px 0 40px;
+    }
+    
+    .navbar-top ul li {
+        float: left;
+    }
+    
+    .navbar-top ul li a {
+        color: #333;
+        padding: 14px 16px;
+        text-align: center;
+        text-decoration: none;
+    }
+    
+    .icon-count {
+        background-color: #ff0000;
+        color: #fff;
+        float: right;
+        font-size: 11px;
+        left: -25px;
+        padding: 2px;
+        position: relative;
+    }
+    
+    /* End */
+    
+    /* Sidenav */
+        .sidenav {
+            background: white;
+            color: #333;
+            box-shadow: 0px 4px 8px 0px grey;
+            border-bottom-right-radius: 25px;
+            height: 76%;
+            left: 0;
+            overflow-x: hidden;
+            padding-top: 40px;
+            position: absolute;
+            top: 130px;
+            width: 300px;
+        }
+        
+        .profile {
+            margin-bottom: 20px;
+            margin-top: -12px;
+            text-align: center;
+        }
+        
+        .profile img {
+            border-radius: 50%;
+            box-shadow: 0px 0px 5px 1px grey;
+        }
+        
+        .name {
+            font-size: 20px;
+            font-weight: bold;
+            padding-top: 20px;
+        }
+        
+        .job {
+            font-size: 16px;
+            font-weight: bold;
+            padding-top: 10px;
+        }
+        
+        .url, hr {
+            text-align: center;
+        }
+        
+        .url hr {
+            margin-left: 34px;
+            width: 70%;
+        }
+        
+        .url a {
+            color: #818181;
+            display: block;
+            font-size: 20px;
+            margin: 10px 0;
+            padding: 6px 8px;
+            text-decoration: none;
+        }
+        
+        .url a:hover, .url .active {
+            background-color: #e8f5ff;
+            border-radius: 28px;
+            color: #000;
+            margin-left: 14%;
+            width: 65%;
+        }
+    
+    /* End */
+    
+    /* Main */
+    .main {
+        margin-top: 2%;
+        margin-left: 29%;
+        font-size: 28px;
+        padding: 0 10px;
+        width: 58%;
+    }
+    
+    .main h2 {
+        color: #333;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+    
+    .main .card {
+        background-color: #fff;
+        border-radius: 18px;
+        box-shadow: 1px 1px 8px 0 grey;
+        height: auto;
+        margin-bottom: 20px;
+        padding: 20px 0 20px 50px;
+    }
+    
+    .main .card table {
+        border: none;
+        font-size: 16px;
+        height: 270px;
+        width: 80%;
+    }
+    
+    .edit {
+        position: absolute;
+        color: #e7e7e8;
+        right: 14%;
+    }
+    
+    
+    .social-media {
+        text-align: center;
+        width: 90%;
+    }
+    
+    .social-media span {
+        margin: 0 10px;
+    }
+    
+    .fa-facebook:hover {
+        color: #5c92ff !important;
+    }
+    
+    .fa-twitter:hover {
+        color: #1da1f2 !important;
+    }
+    
+    .fa-instagram:hover {
+        color: #ce2b94 !important;
+    }
+    
+    .fa-invision:hover {
+        color: #1870e2 !important;
+    }
+    .fa-link:hover {
+        color: #c2d574 !important;
+    }
+
+
+
+     /* The alert message box */
+    .alert {
+    
+    position: absolute;
+    top: 100px;
+    padding: 10px 10px 0px 10px;
+    background-color: #dddddd; /* Red */
+    color: rgb(0, 0, 0);
+    margin: -39px 90vh;
+    width: max-content;
+    height: 6%;
+    align-items: center;
+    justify-content: center;
+    }
+
+    /* The close button */
+    .closebtn {
+    margin-left: 15px;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+    }
+
+</style>
+{%for msg in messages%}
+<div class="alert">
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+  {{msg}}
+</div>
+{%endfor%}
+    <!-- Navbar top -->
+    <div class="navbar-top">
+        <div class="title">
+            <h1>Profile</h1>
+        </div>
+
+        <!-- Navbar -->
+        <ul>
+            <!-- <li>
+                <a href="#message">
+                    <span class="icon-count">29</span>
+                    <i class="fa fa-envelope fa-2x"></i>
+                </a>
+            </li> -->
+            <!-- <li>
+                <a href="#notification">
+                    <span class="icon-count">59</span>
+                    <i class="fa fa-bell fa-2x"></i>
+                </a>
+            </li> -->
+            <li>
+                <a href="/myblogs">
+                    <i class="fa fa-sign-out-alt fa-2x"></i>
+                </a>
+            </li>
+        </ul>
+        <!-- End -->
+    </div>
+    <!-- End -->
+
+    <!-- Sidenav -->
+
+    <div class="sidenav">
+        <div class="profile">
+            <img src="{{user.profile.pic.url}}" alt="" width="100" height="100">
+            <div class="name">
+                {{user.username}}
+            </div>
+            <div class="job">
+                Web Developer
+            </div>
+        </div>
+
+        <div class="sidenav-url">
+            <div class="url">
+                <a href="{% url 'profile' user.pk %}" class="active">Profile</a>
+                {% comment %} <a href="{% url 'profile' user.id %}" class="active">Profile</a> {% endcomment %}
+                <hr align="center">
+            </div>
+            <div class="url">
+                <a href="/password">Change Password</a>
+                <hr align="center">
+            </div>
+        </div>
+    </div>
+    <!-- End -->
+
+    <!-- Main -->
+    <div class="main">
+        <h2>INFO</h2>
+        <div class="card">
+            <!-- <div class="card-body"> -->
+                <!-- <div class="text-right"> -->
+                    {% comment %} <div class="edit" data-toggle="modal" data-target="#profileModal"> {% endcomment %}
+                       <a href="/edit_profile"> <i class="fa fa-pen fa-xs edit"></i></a>
+                    {% comment %} </div> {% endcomment %}
+                <!-- </div> -->
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>User name</td>
+                            <td>:</td>
+                            <td>{{user.username}}</td>
+                        </tr>
+                        <tr>
+                            <td> Full Name</td>
+                            <td>:</td>
+                            <td>{{user.first_name}} {{user.last_name}}</td>
+                        </tr>
+                        <tr>
+                            <td>Email</td>
+                            <td>:</td>
+                            <td>{{user.email}}</td>
+                        </tr>
+                        <tr>
+                            <td>Date joined</td>
+                            <td>:</td>
+                            <td>{{user.date_joined}}</td>
+                        </tr>
+                        <tr>
+                            <td>Description</td>
+                            <td>:</td>
+                            <td>{{user.profile.bio}}</td>
+                        </tr>
+                        {% comment %} <tr>
+                            <td>Job</td>
+                            <td>:</td>
+                            <td>Web Developer</td>
+                        </tr>
+                        <tr>
+                            <td>Skill</td>
+                            <td>:</td>
+                            <td>PHP, HTML, CSS, Java</td>
+                        </tr> {% endcomment %}
+                    </tbody>
+                </table>
+            <!-- </div> -->
+        </div>
+
+        <h2>SOCIAL MEDIA</h2>
+        <div class="card">
+            <!-- <div class="card-body"> -->
+                <a href="/edit_profile"> <i class="fa fa-pen fa-xs edit"></i></a>
+                <!-- <a href="/edit_profile"><i class="fa fa-pen fa-xs edit"></i></a> -->
+                <div class="social-media">
+                    <span class="fa-stack fa-sm">
+                        <i class="fas fa-circle fa-stack-2x"></i>
+                        <a href="{{user.profile.fb_url}}"> <i class="fab fa-facebook fa-stack-1x fa-inverse"></i></a>
+                    </span>
+                    <span class="fa-stack fa-sm">
+                        <i class="fas fa-circle fa-stack-2x"></i>
+                        <a href="{{user.profile.twitter_url}}"><i class="fab fa-twitter fa-stack-1x fa-inverse"></i></a>
+                    </span>
+                    <span class="fa-stack fa-sm">
+                        <i class="fas fa-circle fa-stack-2x"></i>
+                        <a href="{{user.profile.instagram_url}}"><i class="fab fa-instagram fa-stack-1x fa-inverse"></i></a>
+                    </span>
+                    <span class="fa-stack fa-sm">
+                        <i class="fas fa-circle fa-stack-2x"></i>
+                        <a href="{{user.profile.linkedin_url}}"><i class="fab fa-invision fa-stack-1x fa-inverse"></i></a>
+                        <!-- <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i> -->
+                    </span>
+                    <span class="fa-stack fa-sm">
+                        <i class="fas fa-circle fa-stack-2x"></i>
+                        <!-- <i class="fab fa-github fa-stack-1x fa-    inverse"></i> -->
+                        <a href="{{user.profile.website_url}}"><i class="fa fa-link fa-stack-1x fa-inverse"></i></a>
+                    </span>
+                </div>
+            <!-- </div> -->
+        </div>
+    </div>
+
+    	<!--Edit user modal-->
+	{% comment %} <div class="modal fade" tabindex="-1" id="profileModal" role="dialog">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Edit Profile</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+              </div>
+              <div class="modal-body">
+                  <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{ user_form }}
+                        {{profile_form}}
+              </div>
+                <div class="modal-footer">
+                      <button type="submit" class="btn btn-primary">Save changes</button>
+                  </form> 
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+          </div>
+        </div> {% endcomment %}
+
+  {% comment %} <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> {% endcomment %}
+{% comment %} <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script> {% endcomment %}
+{% comment %} <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> {% endcomment %}
+{% endblock body %}

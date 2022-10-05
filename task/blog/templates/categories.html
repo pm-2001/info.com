@@ -1,0 +1,143 @@
+{%extends 'base.html'%}
+{%block title%}Categories{%endblock title%}
+{% block body %}
+<style>
+body{
+  font-family: "Mulish",sans-serif;
+}
+
+h1{
+    margin: 20px 0px 0 45px;
+}
+h2{
+    margin: 20px 0px 0 45px;
+}
+.container{
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 10px 10px rgba(0, 0, 0, .2);
+  display: flex;
+  max-width: 100%;
+  overflow: hidden;
+  width: 900px;
+  height: 30vh;
+  position: relative;
+  margin: 50px;
+}
+
+.container h6{ 
+  opacity: .6;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.container h2{
+  letter-spacing: 1px;
+  margin: 10px 0;
+}
+
+.preview img{ 
+  width: 50vh;
+  height: 35vh;
+
+}
+
+.info{
+  padding: 30px;
+  width: 100%;
+  padding-top: 0px;
+}
+
+.progress-text{
+  font-size: 10px;
+  opacity: .6;
+  letter-spacing: 1px;
+  margin-right: 0px;
+}
+
+.info p{
+  font-size: 12px;
+}
+
+.btn{
+  background: #e40046;
+  border: 1px solid transparent;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, rgba(0, 0, 0, .2));
+  color: #fff;
+  padding: 10px 20px;
+  position: absolute;
+  bottom: 20px;
+  right: 30px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all .4s ease-in-out;
+  font-weight: bold;
+  border-radius: 20px;
+}
+
+.btn:hover{
+  background: #fff;
+  color: #e40046;
+  border: 1px solid #e40046;
+  transform: scale(1.05);
+}
+
+@media(max-width:768px){
+  .course{
+    flex-direction: column;
+    width: 90%;
+
+  }
+  .preview{
+    width: 100%;
+  }
+  .preview h2{
+    margin: 10px 0 0;
+  }
+  .preview a{
+    margin-top: 10px;
+  }
+  .info h2{
+    margin-top: 10px;
+  }
+  .info p{
+    margin-bottom: 50px;
+  }
+  .btn{
+    padding: 10px 15px;
+    font-size: 14px;
+    /* float: right; */
+  }
+}
+</style>
+
+<h1> Category : {{cats}}</h1>
+{%if category_posts %}
+    {%for i in category_posts %}
+    <div class="container">
+            <div class="preview">
+                {% if i.image %}
+                        <img class ="card-img-top" src="{{i.image.url}}">
+                {% endif %}
+            </div>
+            <div class="info">
+                <span class="progress-text">{{i.date}}</span>
+                <h6>BY - {{i.username}} </h6>
+                <h2>{{i.category}}-{{i.title}}</h2>
+                {% comment %} <p class="p-trunc">{{ i.body|slice:":20" | safe}}</p> {% endcomment %}
+                <p class="p-trunc">{{ i.snippet}}</p>
+                <a href = "{% url 'postdetail' i.id %}"><button class="btn">Read more</button></a>
+            </div>
+            </div>
+        
+        {% comment %} <script>
+            const trunc = document.querySelector('.p-trunc');
+            trunc.innerText= trunc.innerText.substring(0,20)
+        </script> {% endcomment %}
+        {%endfor%}
+{% else %}
+        <h2> No posts yet !...</h2>
+{%endif%}
+
+    
+{% endblock body %}

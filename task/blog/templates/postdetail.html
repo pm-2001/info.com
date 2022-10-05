@@ -1,0 +1,326 @@
+{%extends 'base.html'%}
+{%block title%}Readmore{%endblock title%}
+{% block body %}
+
+    <style>
+
+        .column1 {
+          float: left;
+          width: 70%;
+          padding: 30px;
+        }
+        .column3 {
+          float: left;
+          width: 70%;
+          padding: 30px;
+          margin-bottom: 20vh;
+        }
+        .column2 {
+          float: left;
+          width: 30%;
+          padding: 60px 80px;
+          padding-left: 50px;
+          
+        }
+        .column4 {
+          float: left;
+          width: 30%;
+          padding: 60px 80px;
+          padding-left: 50px;
+          
+        }
+        
+        .card-container {
+          background-color: #231E39;
+          border-radius: 5px;
+          box-shadow: 0px 10px 20px -10px rgba(0,0,0,0.75);
+          color: #B3B8CD;
+          padding-top: 30px;
+          width: 350px;
+          max-width: 100%;
+          text-align: center;
+          
+        }
+        
+        .card-container .round {
+          border: 1px solid #03BFCB;
+          border-radius: 50%;
+          padding: 7px;
+        }
+        
+        .primary a{
+          background-color: #231E39;
+          border: 1px solid #03BFCB;
+          border-radius: 3px;
+          color: #03BFCB;
+          font-weight: 500;
+          padding: 10px 100px;
+          text-decoration: none;
+        }
+        .primary a:hover{
+          background-color: #03BFCB;
+          border: 1px solid #03BFCB;
+          border-radius: 3px;
+          color: #231E39;
+          font-weight: 500;
+          padding: 10px 100px;
+          text-decoration: none;
+        }
+        
+        .skills {
+          background-color: #1F1A36;
+          padding: 15px;
+          margin-top: 30px;
+        }
+        
+        .skills ul {
+          list-style-type: none;
+          margin-top: 1px;
+          padding: 0;
+        }
+        
+        .skills ul li {
+          border: 1px solid #2D2747;
+          border-radius: 2px;
+          display: inline-block;
+          font-size: 30px;
+          margin: 0 5px 0px 5px;
+          padding: 8px 8px 0px 8px;
+        }
+
+        .social_icon{
+          position: relative;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          /* margin: 2px 0 0 0; */
+          padding: 0px;
+          flex-wrap: wrap;
+        }
+
+        h3{
+          text-transform: capitalize;
+        }
+
+        .recent{
+          border-style: solid;
+          border-color: #028a9cbd;
+          background: #51cedfd2;
+          border-radius: 5px;
+          height: 50vh;
+          text-align: left;
+          padding: 2vh 2vh;
+        }
+       .recent a{
+          text-decoration: none;
+        }
+
+        .usercomment{
+          background: #dcdadaee;
+          border-style: dotted;
+          border-width: 1px;
+          border-radius: 5px;
+          padding: 20px;
+        }
+
+        .usercomment .usericon {
+          border: 1px solid #03BFCB;
+          border-radius: 50%;
+          padding: 0px;
+          position: absolute;
+          display: flex;  
+        }
+
+        .usercomment strong{
+          margin-left: 60px;
+          display: block;
+        }
+
+        .usercomment small{
+          margin-left: 60px;
+          display: block;
+        }
+
+        .userbody{
+          margin-left: 60px;
+          display: block;
+        }
+
+        .addcomment{
+          background: #dcffe2;
+          border: #02899C dashed ;
+          border-width: .5px;
+          border-radius: 5px;
+          padding: 20px;
+          width: 95%;
+        }
+
+        .form-group {
+          margin-bottom: 20px;
+        }
+
+        .form-control {
+          width: 60%;
+          padding: 10px 20px;
+          margin: 4px 0;
+          box-sizing: border-box;
+          display: flex;
+        }
+
+        textarea {
+        width: 250px;
+        height: 100px;
+      }
+
+      .button {
+            background-color: #1259d3; /* Green */
+            border: none;
+            color: white;
+            padding: 10px 27px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            border-radius: 8px;
+      }
+        
+      .button:hover {
+            box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+      }
+
+      .like{
+        background: #4c8dff;
+        height: 5vh;
+        width: 5vh;
+        border-radius: 8px;
+      }
+
+      .unlike{
+        background: #4c8dff;
+        height: 5vh;
+        width: 5vh;
+        border-radius: 8px;
+      }
+
+
+
+    </style>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS_HTML"></script>
+<div class="row">
+  <div class="column1" >
+    <div class="post">
+      <h1>{{post.title}}-{{post.category}}</h1>
+      <small>By {{post.username}} </small>
+      <hr>
+      <br>
+      <img height="300px" src="{{post.image.url}}">
+      <br>
+      <br>
+      {{post.body | safe}}
+    </div>
+  </div>
+  <div class="column2">
+    <div class="card-container">
+      <img class="round" src="{{post.username.profile.pic.url}}" height="170px" width ="170px" alt="user" />
+      <br><br>
+      <h3>{{post.username.first_name}} {{post.username.last_name}}</h3>
+      <br>
+      <p>{{post.username.profile.bio}}</p>
+      <br><br>
+      <div class="primary"><a href = "{% url 'profile' post.pk %}">View Profile</a></div>
+      <div class="skills">
+        <ul class="social_icon">
+          <li><a href="{{post.username.profile.fb_url}}"><ion-icon name="logo-facebook"></ion-icon></a></li>
+          <li><a href="{{post.username.profile.website_url}}"><ion-icon name="link"></ion-icon></a></li>
+          <li><a href="{{post.username.profile.linkedin_url}}"><ion-icon name="logo-linkedin"></ion-icon></a></li>
+          <li><a href="{{post.username.profile.instagram_url}}"><ion-icon name="logo-instagram"></ion-icon></a></li>
+          <li><a href="{{post.username.profile.twitter_url}}"><ion-icon name="logo-twitter"></ion-icon></a></li>
+      </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="column3">
+    <form action="{% url 'like_post' post.pk %}" method="POST">
+      {% csrf_token %}
+      {% if user.is_authenticated %}
+        {% if liked %}
+          <button type="submit", name="post_id" , value="{{post.id}}" , class="unlike">Unlike</button>
+        {% else %}
+          <button type="submit", name="post_id" , value="{{post.id}}" , class="like"><i class="fas fa-thumbs-up fa-2x"></i></button> 
+        {% endif %}
+        {{ total_likes }} likes
+      {% else %}
+      <button class="like"><i class="fas fa-thumbs-up fa-2x"></i></button>
+        <a href="{% url 'signin' %}">Sign in</a>
+      {% endif %}
+    </form>
+    <br><hr><br>
+
+    
+      <div class="comment">
+          <h2>Comments ({{comments.count}}) .....</h2><br> 
+            {% if user.is_authenticated %}
+              {% if not post.comments.all %}
+                No Comments Yet ...
+              {% endif %}
+            {% else %}
+              <a href="{% url 'signin' %}">Sign in to Add comment</a>
+            {% endif %}
+          <br><br>
+      </div> 
+    <!-- Form to leave comment -->
+    {% if user.is_authenticated %}
+        <div class="addcomment">
+          <h1>Add comment ...</h1>
+              <br>
+              <div class="form-group" >
+                  <form method ="POST" >
+                      {% csrf_token %}
+                      <div class="form-group">
+                        <input type="text" class="form-control" name="name" id="name" placeholder="Enter your name">
+                      </div>
+                      <div class="form-group">
+                        <textarea type="text" class="form-control" name="body" id="body" placeholder="add your comment"></textarea>
+                      </div>
+                      <div class="form-group">
+                        <button class="button">Submit</button>
+                    </div>
+                  </form>
+              </div>
+              {% endif %}
+              {% for comment in post.comments.all %}
+                    <div class="usercomment">
+                      <img class="usericon" height="50px" width ="50px" src="{{post.username.profile.pic.url}}" alt="Avatar">
+                        <strong>
+                          {{comment.name}}
+                        </strong>
+                        <small>{{comment.date_added}}</small>
+                        <br>
+                        <div class="userbody">
+                          {{comment.body}}
+                        </div>
+                    </div>
+                      <br>
+              {% endfor %}
+        </div>
+  </div>
+
+  <div class="column4" >
+    <div class="recent">
+      <a href="#"><h3>Recent post..</h3></a>
+      <br>
+      {%for i in posts %}
+        {% if forloop.counter < 8 %}
+          <a href = "{% url 'postdetail' i.id %}">
+              <p>{{ i.snippet}}</p>
+            </a>
+          <br>
+        {% endif %}
+      {%endfor%}
+    </div>
+  </div>
+</div>
+{% endblock body %}

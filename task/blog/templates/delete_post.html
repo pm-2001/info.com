@@ -1,0 +1,80 @@
+{%extends 'base.html'%}
+{%block title%}Delete post{%endblock title%}
+{% block body %}
+<style>
+    .main {
+        margin-top: 10%;
+        margin-left: 22%;
+        font-size: 28px;
+        padding: 0 10px;
+        width: 58%;
+    }
+    
+    
+    .main .card {
+        background-color: #fff;
+        border-radius: 18px;
+        box-shadow: 1px 1px 8px 0 grey;
+        height: 50vh;
+        margin-bottom: 20px;
+        padding: 20px 0 20px 0px;
+        align-items: center;
+    }
+
+    .card h3{
+        padding-top: 80px;
+        text-align: center;
+    }
+
+    .button {
+        background-color: #e50805; /* Green */
+        border: none;
+        color: white;
+        padding: 10px 27px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        border-radius: 8px;
+    }
+    
+    .button:hover {
+        box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    }
+
+    .button2 {
+        background-color: #888f88; /* Green */
+        border: none;
+        color: white;
+        padding: 10px 27px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        border-radius: 8px;
+    }
+    
+    .button2:hover {
+        box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    }
+
+    .card form{
+        padding-left: 37%;
+        padding-top: 30px;
+    }
+
+</style>
+<div class="main">
+    <div class="card">
+
+            <h3>Are you sure want to Delete ? </h3>
+            <form method="POST" action=" " >
+                {% csrf_token %}
+                <a href="{% url 'myblogs' %}"><div class="button2">Cancel</div></a>     
+                <button class="button">Delete</button>
+            </form>
+
+
+    </div>
+</div> 
+{% endblock body %}

@@ -1,0 +1,193 @@
+{%extends 'base.html'%}
+{%block title%}Create post{%endblock title%}
+{% block body %}
+<style>
+  .container {
+    align-items: center;
+    margin: 20px 345px;
+    border-style: solid;
+    border-color: blue;
+    border-radius: 10px;
+    width: 124vh;
+
+    background:linear-gradient(to left top, #c4d7e6 0, #c4d7e6 33%, #66a5ad 33%, #66a5ad 66%, #dc7bac 66%, #dc7bac 100%);
+  }
+
+  .content {
+    margin: 0px 20px;
+  }
+
+  .title {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  .form-group {
+    margin: 30px 20px;
+  }
+
+  .form-control {
+    width: 100%;
+    padding: 10px 20px;
+    margin: 4px 0;
+    box-sizing: border-box;
+    display: flex;
+  }
+
+  label.filebutton {
+    width: 120px;
+    height: 40px;
+    overflow: hidden;
+    position: relative;
+    background-color: #ccc;
+  }
+
+  label span input {
+    z-index: 999;
+    line-height: 0;
+    font-size: 50px;
+    position: absolute;
+    top: -2px;
+    left: -700px;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    -ms-filter: "alpha(opacity=0)";
+    cursor: pointer;
+    _cursor: hand;
+    margin: 0;
+    padding: 0;
+  }
+  .ima{
+    padding: 10px 20px;
+    margin-left: 20px;
+    margin-right: 80%;
+    border-style: solid;
+    width: auto;
+    height: max-content;
+    display: flex;
+    border-radius: 5px;
+    background: #5be8ebce;
+    border-color: #219698;
+
+  }
+
+  .button1 {
+    display: inline-block;
+    padding: 5px 15px;
+    font-size: 15px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: #174acc;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 3px #999;
+  }
+
+  .button1:hover {
+    background-color: #14317b
+  }
+
+  .button1:active {
+    background-color: #3e5e8e;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+  }
+
+  .button2 {
+    display: inline-block;
+    padding: 5px 15px;
+    font-size: 15px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: #737a8c;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 3px #999;
+  }
+
+  .button2:hover {
+    background-color: #505560
+  }
+
+  .button2:active {
+    background-color: #3e5e8e;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+  }
+
+  /* The alert message box */
+  .alert {
+    position: absolute;
+    top: 100px;
+    padding: 10px 10px 0px 10px;
+    background-color: #dddddd; /* Red */
+    color: rgb(0, 0, 0);
+    margin: -39px 90vh;
+    width: max-content;
+    height: 6%;
+    align-items: center;
+    justify-content: center;
+    }
+
+/* The close button */
+.closebtn {
+  margin-left: 15px;
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+</style>
+{%for msg in messages%}
+  <div class="alert">
+    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+    {{msg}}
+  </div>
+{%endfor%}
+<div class="container">
+  <form method="post" action="" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{form.media}}
+    <div style="display:none;">
+      {{form.username}}
+    </div>
+    <div class="form-group">
+      <input type="title" class="form-control" name="title" id="title" placeholder="New post title ...">
+    </div>
+    <label class="filebutton">
+      <div class="ima">
+        <p> Add cover image</p> 
+      </div>
+      <span><input type="file" id="myfile" name="image"></span>
+    </label>
+    <div class="form-group">
+      <input type="snippet" class="form-control" name="snippet" id="snippet" placeholder="Add Your Post snippet ...">
+    </div>
+   <div class="form-group">
+         {{form.category}}
+    </div> 
+
+    
+    <div class="content">
+      {{form.body}}
+      <br>
+      <br>
+      <button class="button1" type="submit">Submit</button>
+      <a href="{% url 'home' %}">
+        <div class="button2">Cancel</div>
+      </a>
+    </div>
+  </form>
+  <br>
+</div>
+
+{% endblock body %}

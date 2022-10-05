@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="/static/blog/style.css">
+    <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
+    <link href="/static/fontawesome-free-6.1.1-web/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mr Dafoe">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">
+    <link rel="icon" type="image/x-icon" href="/media/uploads/icon.svg">
+    
+    <title>{%block title %}Blogs{%endblock title%}</title>
+</head>
+<body>
+    <nav>
+        <div class="logo"><a href="/">info.com</a></div>
+        <input type="checkbox" id="click">
+        <label for="click" class="menu-btn"><i class="fas fa-bars"></i></label>
+        <ul>
+            
+            <!-- <li><a href="/contact"><i class="fa-solid fa-message-quote"></i>Contact</a></li> -->
+            <!-- <li><a href="/about">About</a></li> -->
+            {% if user.is_authenticated %}<li><a href="{%url 'home'%}">Home</a></li>{% endif %}
+            {% if user.is_authenticated %}<li><a href="/myblogs">My blogs</a></li>{% endif %}
+            <li><a href="#">Category</a>
+                <ul>
+                   <div class="submenu">
+                    <li><a href="/category/Coding/">Coding</a></li>
+                    <li><a href="/category/Technology/">Technology</a></li>
+                    <li><a href="/category/News/">News</a></li>
+                    <li><a href="/category/Sports/">Sports</a></li>
+                    <li><a href="/category/Entertainment/">Entertainment</a></li>
+                    <li><a href="/category/Open%20source/">Open Source</a></li>
+                    <li><a href="/category/Games/">Games</a></li>
+                    <li><a href="/category/Business/">Business</a></li>
+                    <li><a href="/category/Social%20Media/">Social Media</a></li>
+                    <li><a href="/category/Religious/">Religious</a></li>
+                    <li><a href="/category/Political/">Political</a></li>
+                    {% if request.user.is_superuser %}
+                    <li><a href="{% url 'add_category'%}">Add category</a></li>
+                    {% endif %}
+                    </div>
+                </ul>  
+            </li>
+            {% if user.is_authenticated %}<li><a href="/posts">Create</a></li>{% endif %}
+            {% if user.is_authenticated %}<li><div class="user"><a href="#"><i class="fa-solid fa-user"></i></a></div>
+                    <ul>
+                       <div class="submenu">
+                        <li><h4>Hello, {{request.user}}</h4></li>
+                        <li><a href="{% url 'profile' user.pk %}">Profile</a></li>
+                        <li><a href="/myblogs">My blogs</a></li>
+                        <li><a href="/posts">Create</a></li>
+                        <li><a href="/logout">Logout</a></li>
+                        {% else %}
+                        <li><a href="/signin">Sign in</a></li>
+                        {% endif %}
+                        </div>
+                    </ul>  
+            </li>
+        </ul>
+    </nav>
+    {% block body %}
+    {% endblock body %}
+    <footer>
+        <div class="waves">
+            <div class="wave" id="wave1"></div>
+            <div class="wave" id="wave2"></div>
+            <div class="wave" id="wave3"></div>
+            <div class="wave" id="wave4"></div>
+        </div>
+        
+        <ul class="social_icon">
+            <li><a href="#"><ion-icon name="logo-facebook"></ion-icon></a></li>
+            <li><a href="#"><ion-icon name="link"></ion-icon></a></li>
+            <li><a href="#"><ion-icon name="logo-linkedin"></ion-icon></a></li>
+            <li><a href="#"><ion-icon name="logo-instagram"></ion-icon></a></li>
+        </ul>
+        <ul class="menu">
+            <li><a href="/contact">Contact Us</a></li>|<li><a href="/about">About Us</a></li>
+
+        </ul>
+        <p>@2022 Blogs | All Rights Reserved</p>
+    </footer>
+    <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+</body>
+</html>

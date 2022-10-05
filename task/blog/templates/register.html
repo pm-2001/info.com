@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+            .gradient-custom-3 {
+            background: #84fab0;
+            background: -webkit-linear-gradient(to right, rgba(132, 250, 176, 0.5), rgba(143, 211, 244, 0.5));
+            background: linear-gradient(to right, rgba(132, 250, 176, 0.5), rgba(143, 211, 244, 0.5))
+            }
+            .gradient-custom-4 {
+            background: #84fab0;
+            background: -webkit-linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1));
+            background: linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1))
+            }
+            body{
+                background: #84fab0;
+            background: -webkit-linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1));
+            background: linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1)) 
+            }
+
+            .alert {
+                background-color: #dedede; /* Red */
+                color: rgb(0, 0, 0);
+                margin: auto;
+                width: max-content;
+                height: 10%;
+              }
+              
+              /* The close button */
+              .closebtn {
+                margin-left: 15px;
+                color: rgb(0, 0, 0);
+                font-weight: bold;
+                float: right;
+                font-size: 22px;
+                line-height: 20px;
+                cursor: pointer;
+                transition: 0.3s;
+              }
+              
+              /* When moving the mouse over the close button */
+              .closebtn:hover {
+                color: rgb(255, 255, 255);
+              }
+    </style>
+</head>
+{%for msg in messages%}
+        <div class="alert">
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+            {{msg}}
+        </div>
+        {%endfor%}
+        <section class="vh-100 bg-image">
+        <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+            <div class="container h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+                <div class="card" style="border-radius: 15px;">
+                    <div class="card-body p-5">
+                    <h2 class="text-uppercase text-center mb-5">Create an account</h2>
+
+                    <form method ="POST" action="/register">
+                        {% csrf_token %}
+
+                        <div class="form-outline mb-4">
+                        <input type="text" id="form3Example1cg" class="form-control form-control-lg" placeholder="Enter username" name = username>
+                        </div>
+
+                        <div class="form-outline mb-4">
+                        <input type="email" id="form3Example3cg" class="form-control form-control-lg" placeholder="Enter email" name = email>
+                        </div>
+
+                        <div class="form-outline mb-4">
+                        <input type="password" id="form3Example4cg" class="form-control form-control-lg" placeholder="Enter Password" name =password1>
+                        </div>
+
+                        <div class="form-outline mb-4">
+                        <input type="password" id="form3Example4cdg" class="form-control form-control-lg" placeholder="Re-enter Password" name = password2>
+                        </div>
+
+                        <div class="d-flex justify-content-center">
+                        <input type="submit" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body" name = "Create User">
+                        </div>
+
+                        <p class="text-center text-muted mt-5 mb-0">Already have an account? <a href="/signin"><u>Signin</u></a></p>
+                    </form>
+
+                    </div>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        </section>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>
+
+
+{% comment %} <h1>Register !</h1>
+<div class="form-group">
+    <form method ="POST" action="/register">
+        {% csrf_token %}
+        {{ form.username.label }}
+        {{form.username}}
+        <br>
+        {{ form.email.label }}
+        {{form.email}}
+        <br>
+        {{ form.password1.label }}
+        {{form.password1}}
+        <br>
+        {{ form.password2.label }}
+        {{form.password2}}
+        <br>
+        <input type="submit" name ="Create User">
+        <p>Already signed up <a href="/signin"><b>Sign in</b></a></p>
+
+    </form>
+</div>  {% endcomment %}
+
+
+
+

@@ -1,0 +1,294 @@
+
+*{
+    
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    align-items: center;
+}
+body{
+    background-image: url("/media/uploads/gradienbt.jpg");
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 210vh 130vh;
+    min-height: 100vh ;
+    display: block;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+nav{
+    font-family: "Audiowide", sans-serif;
+    height: 60px;
+    background:linear-gradient(to right,#2989d8 0,#b524b5 52%,#f4af84 100%);
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+    padding: 0px 10px 0px 30px;
+}
+
+nav .logo a{
+    font-family: "Mr Dafoe", sans-serif;
+    font-size: 45px;
+    color: #ffffff;
+    /* font-weight: 600; */
+    text-decoration: none;
+    /* background: linear-gradient(to right,#2989d8 0,#ffffff 52%,#2a8bdb50 100%); */
+    border-radius: 5px;
+    padding: 1px 10px 1px 10px;
+
+}
+nav ul{
+    display: flex;
+    list-style: none;
+}
+nav ul li{
+    margin: 0px 5px;
+}
+nav ul li a{
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    padding: 8px 10px;
+    border-radius: 5px;
+    border-style: solid;
+    border-color: #dfce52;
+    border-width: 2px;
+    border-radius: 9px;
+    padding: 4px 10px;
+}
+nav ul li a:hover{
+    background: #dfce52;
+    color: #081210;
+}
+
+nav .menu-btn i{
+    color: rgb(255, 255, 255);
+    font-size: 22px;
+    cursor: pointer;
+    display: none;
+}
+.user a{
+    text-decoration: none;
+    color: aliceblue;
+    border-color: #dfce52;
+    margin: 1px 20px;
+    padding: 8px 10px;
+    border-style: solid;
+    border-radius: 50px;
+}
+.user a:hover{
+    background: #dfce52;
+    color: #081210;
+}
+nav ul ul {
+    display: none;
+}
+nav ul li:hover > ul{
+    display: block;
+    position: absolute;
+    margin-left: -100px;
+    margin-right: 0px;
+    margin-top: -10px;
+    padding-top: 40px;
+    
+}
+nav ul li ul .submenu{
+    margin-top: 0px;
+    margin-right: 0px;
+    padding: 1px 20px;
+    background:linear-gradient(to bottom,#42e1cc 0,#f959e4 100%);
+    border-radius: 10px;
+    padding-bottom: 40px;
+
+}
+
+ .submenu h4{
+    color: rgb(255, 255, 255);
+    text-transform: uppercase;
+
+}
+
+#click{
+    display: none;
+}
+nav ul li ul li{
+    margin-top: 25px;
+    margin-right: 10px;
+}
+
+footer{
+    margin-top: 60vh;
+    margin-bottom: 0px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background: #3585ff;
+    min-height: 100px;
+    padding: 10px 50px;
+    flex-direction: column;
+}
+footer .social_icon{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 25px 0 0 0;
+    padding: 0px;
+    flex-wrap: wrap;
+}
+
+footer .menu{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0px 0 0 0;
+    padding: 0px;
+    flex-wrap: wrap;
+}
+
+
+footer .social_icon li,footer .menu li{
+    list-style: none;
+}
+
+footer .social_icon li a{
+    font-size: 2em;
+    color: #fff;
+    margin: 0 10px;
+    display: inline-block;
+    transition: 0.5s;
+}
+
+footer .menu li a{
+    font-size: 1.2em;
+    color: #fff;
+    margin: 0 10px;
+    display: inline-block;
+    text-decoration: none;
+    opacity: 0.75;
+}
+
+footer .social_icon li a:hover{
+    transform: translatey(-10px);
+}
+
+footer .menu li a:hover{
+    opacity: 1;
+}
+
+footer p{
+    color: #fff;
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 1em;
+}
+
+footer .wave{
+    position: absolute ;
+    top: -70px;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background:url("/media/uploads/wave.png");;
+    background-size: 1000px 100px;
+}
+
+footer .wave#wave1{
+    z-index: 1000;
+    opacity: 1;
+    bottom: 0;
+    animation: animateWave 4s linear infinite;
+}
+
+footer .wave#wave2{
+    z-index: 999;
+    opacity: 0.5;
+    bottom: 10px;
+    animation: animateWave_02 4s linear infinite;
+}
+
+footer .wave#wave3{
+    z-index: 1000;
+    opacity: 0.2;
+    bottom: 15px;
+    animation: animateWave 3s linear infinite;
+}
+
+footer .wave#wave4{
+    z-index: 999;
+    opacity: 0.7;
+    bottom: 20px;
+    animation: animateWave_02 3s linear infinite;
+}
+@keyframes animateWave{
+    0%{
+        background-position-x: 1000px;
+    }
+    100%{
+        background-position-x: 0px;
+    }
+    
+}
+
+@keyframes animateWave_02{
+    0%{
+        background-position-x: 0px;
+    }
+    100%{
+        background-position-x: 1000px;
+    }
+    
+}
+
+@media (max-width:940px){
+    nav .menu-btn i{
+        display: block;
+    }
+    #click:checked~ul{
+        left: 0%;
+    }
+    #click:checked~.menu-btn i:before{
+        content: "\f00d";
+    }
+    nav ul{
+        position: fixed;
+        top: 80px;
+        left: -100%;
+        background: #426d66;
+        height: 100vh;
+        width: 100%;
+        display: block;
+        text-align: center;
+        transition: all 0.3s ease;
+    }
+    nav ul li{
+        margin: 10px 0px;
+    }
+    nav ul li a{
+        font-size: 20px;
+        display: block;
+
+    }
+    nav ul li a:hover,nav ul li a.active{
+        background: none;
+        color: cyan;
+    }
+    nav ul li:hover > ul{
+        display: block;
+        position: absolute;
+        border-radius: 5px;
+        margin-left: -50px;
+        margin-right: 10px;
+        margin-top: -30px;
+        padding-top: 30px;
+    }
+
+}
