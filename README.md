@@ -20,15 +20,15 @@ For Linux:
 ### Prerequisites
 
 You are required to install:
-*Django
+* Django
 ```
 pip install django
 ```
-*ck-editor
+* ck-editor
 ```
 pip install ck-editor
 ```
-*django-filter
+* django-filter
 ```
 pip install djnago-filter
 ```
