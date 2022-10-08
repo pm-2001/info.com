@@ -1,6 +1,7 @@
 {%extends 'base.html'%}
 {%block title%}Readmore{%endblock title%}
 {% block body %}
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS_HTML"></script>
 
     <style>
 
@@ -202,10 +203,12 @@
         border-radius: 8px;
       }
 
-
+body{
+  background-image: url('https://images.unsplash.com/photo-1518655048521-f130df041f66?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80');
+}
 
     </style>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS_HTML"></script>
+<body>
 <div class="row">
   <div class="column1" >
     <div class="post">
@@ -213,14 +216,18 @@
       <small>By {{post.username}} </small>
       <hr>
       <br>
+      <div style="margin-left: 35%;">
       <img height="300px" src="{{post.image.url}}">
+    </div>
       <br>
       <br>
+      <div style="font-size: 20px; font-weight: 500;">
       {{post.body | safe}}
+    </div>
     </div>
   </div>
   <div class="column2">
-    <div class="card-container">
+    <div class="card-container" style="margin-left: 14%;">
       <img class="round" src="{{post.username.profile.pic.url}}" height="170px" width ="170px" alt="user" />
       <br><br>
       <h3>{{post.username.first_name}} {{post.username.last_name}}</h3>
@@ -258,7 +265,7 @@
       {% endif %}
     </form>
     <br><hr><br>
-
+<!-- <h1>hhjajhajhajhajhajhjahjahjahjkahjahjhajkahajkhajkhjkahkjahj</h1> -->
     
       <div class="comment">
           <h2>Comments ({{comments.count}}) .....</h2><br> 
@@ -309,7 +316,7 @@
   </div>
 
   <div class="column4" >
-    <div class="recent">
+    <div class="recent" style="margin-left: 14%;">
       <a href="#"><h3>Recent post..</h3></a>
       <br>
       {%for i in posts %}
@@ -324,3 +331,4 @@
   </div>
 </div>
 {% endblock body %}
+</body>
