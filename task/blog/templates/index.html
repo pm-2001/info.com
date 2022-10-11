@@ -161,6 +161,35 @@ body{
     /* float: right; */
   }
 }
+.blankspace{
+  display: none;
+}
+
+
+@media screen and (min-width: 200px) and (max-width: 767px){
+  .column2{
+    display: none;
+  }
+  .btw1{
+    margin-right: 17%;
+  }
+  .blankspace{
+  display: block;
+}
+}
+@media only screen and (min-width: 768px) and (max-width: 1419px)
+{
+  .column2{
+    display: none;
+  }
+  .btw1{
+    margin-right: 10%;
+  }
+  .column1
+  {
+     margin-left: 10%;
+  }
+}
 </style>
 
 {%for msg in messages%}
@@ -169,7 +198,9 @@ body{
     {{msg}}
   </div>
 {%endfor%}
-
+<div class="blankspace">
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</div>
 
   <div class="column1">
     {%for i in posts %}
@@ -184,7 +215,7 @@ body{
         <h6>BY - {{i.username}} </h6>
         <h2>{{i.category}}-{{i.title}}</h2>
         <p class="p-trunc">{{ i.snippet}}</p>
-        <a href = "{% url 'postdetail' i.id %}"><button class="btn">Read more</button></a>
+        <a href = "{% url 'postdetail' i.id %}"><button class="btn btw1" >Read more</button></a>
       </div>
     </div>
     {%endfor%}
