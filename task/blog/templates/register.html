@@ -48,8 +48,28 @@
               .closebtn:hover {
                 color: rgb(255, 255, 255);
               }
+              #myVideo {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+}
+
+
+.content {
+  position: fixed;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  color: #f1f1f1;
+  width: 100%;
+  padding: 20px;
+}
     </style>
 </head>
+<video autoplay muted loop id="myVideo">
+    <source src="/static/blog/bgvid.mp4" type="video/mp4">
+  </video>
 {%for msg in messages%}
         <div class="alert">
             <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
