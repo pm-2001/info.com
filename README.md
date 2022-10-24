@@ -20,9 +20,17 @@ For Linux:
 ### Prerequisites
 
 You are required to install:
+* pip
+```
+python -m ensurepip --upgrade
+```
 * Django
 ```
 pip install django
+```
+* Pillow
+```
+pip install pillow
 ```
 * ck-editor
 ```
